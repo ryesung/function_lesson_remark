@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intro to Functions and Scope</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2" />
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif';
+            font-weight: normal;
+           }
+      h1 {
+        font-family: 'Yanone Kaffeesatz';
+        
+      }
+      h2 {
+        font-family: 'Yanone Kaffeesatz';
+        color: #2DCAB2;
+      }
+      h3 {
+        font-family: 'Yanone Kaffeesatz';
+        color:darkblue;
+       
+      }
+
+      h4 {
+        font-family: 'Yanone Kaffeesatz';
+        color: yellowgreen;
+        size: 50px;
+      }
+      
+      .solution {
+        text-decoration-color: red;
+      }
+      
+      .remark-code, .remark-inline-code { font-family: 'Fira Code';
+    font-size:x-large; }
+
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+---
+
+class: center, middle
+<img style="width: 100%;" src="/generation_logo.jpg"/>
+##Javascript Functions and Variable Scope
+
+
+---
+class: center
+##Agenda - Functions and Scope!
+
+###1. Intro to Functions
+
+###2. Passing Parameters in Functions
+
+###3. Function expressions (other syntactical ways of writing functions)
+
+###4. Scope- Global and Block variables
+
+---
+.center[![fun with functions](https://memegenerator.net/img/instances/74588228.jpg)]
+---
+class: center, middle
+
+##What is a function?
+
+###Functions are one of the fundamental building blocks in JavaScript. A function in JavaScript is similar to a procedure—a set of statements that performs a task or calculates a value, but for a procedure to qualify as a function, it should take some input and return an output where there is some obvious relationship between the input and the output. To use a function, you must define it somewhere in the scope from which you wish to call it.
+
+---
+
+##Defining functions
+
+###Function declarations
+
+A function definition (also called a **function declaration**, or **function statement**) consists of the function keyword, followed by:
+
+- The name of the function.
+
+- A list of parameters to the function, enclosed in parentheses and separated by commas.
+
+- The JavaScript statements that define the function, enclosed in curly brackets, { }.
+
+---
+
+
+# JS Function Syntax
+.center[![Center-aligned-image](https://www.tutorialstonight.com/assets/js/javascript-function.webp)]
+
+---
+###For example, the following code defines a simple function named square:
+
+```JavaScript
+
+function square(number) {
+  return number * number;
+}
+
+```
+--
+<br>
+## What is the name of the function?   Parameter?   Function statements?
+
+--
+
+<ul>
+  <li><h3 style="color:darkred"> Function Name:  <b style="color:darkblue">square</b></h3></li>
+  <li><h3 style="color:darkred"> Parameter:  <b style="color:darkblue">number</b></h3></li>
+  <li><h3 style="color:darkred"> Actions/Statements:  <b style="color:darkblue">return number * number</b></h3></li>
+
+</ul>
+
+---
+## Function calling
+
+```JavaScript
+
+function square(number) {
+  return number * number;
+}
+
+square(5);
+// returns 25
+
+
+const twoSquares = square(5) + square(2);
+console.log(twoSquares);
+
+//what is printed to the console?
+
+```
+--
+
+<br>
+# 29 !
+---
+.center[![Center-aligned-image](https://i.pinimg.com/736x/c6/4e/fc/c64efc9adaedbf446f328698e8b67388--computer-jokes-computer-programming.jpg)]
+---
+
+## Function Declarations are **hoisted** unlike function expressions
+
+```JavaScript
+
+square(5);
+// returns 25
+
+
+const twoSquares = square(5) + square(2);
+console.log(twoSquares);                    
+//prints 29
+
+function square(number) {
+  return number * number;
+}
+```
+## Behaves in the same way no matter where the function declaration is placed
+
+---
+
+##Return 
+### The *<span style="color:darkred">return</span>*  keyword in JavaScript is a keyword to build a statement that ends JavaScript code execution. In functions it returns a value and exits the block of code.
+
+
+#VS.
+
+
+##console.log()
+###Prints to the console.
+
+---
+#Example
+
+```JavaScript
+function tomatoPaste(){
+  console.log('I am made of tomatoes!')
+  return 'I am good on pizza!'
+}
+
+tomatoPaste()
+//prints 'I am made of tomatoes!' and nothing happens to the return value
+
+const yummy =  tomatoPaste() 
+// function is called and 'I am made of tomatoes!' is 
+//printed to the console
+
+console.log(yummy)    
+// return value held in variable yummy - prints string- 'I am good on pizza!'
+
+console.log(tomatoPaste())
+// prints both values
+
+```
+---
+## What's different with this function example?
+
+```Javascript
+
+function multiply(number1, number2) {
+  return number1 * number2;
+}
+
+```
+--
+###Two parameters are entered. 
+```Javascript
+
+multiply(3, 4)
+// returns the value 12
+
+multiply(3)
+// if a parameter is specified but not passed when calling the function
+//value is undefined and in this case returns NaN
+```
+
+---
+## Default Parameters
+###When declaring a function, you can pass default parameter values.
+
+```Javascript
+function isSuperhuman(name = false){
+  if (!name){
+    return "There are no superhumans around.";
+  } else {
+    return `${name} has superpowers!!!`;
+    }
+  }
+```
+--
+```JavaScript
+console.log(isSuperhuman());
+// returns "There are no superhumans around."
+
+console.log(isSuperhuman('Chris'));
+//returns "Chris has superpowers!!!""
+
+```
+---
+
+# Function expressions (other syntactical ways of writing functions)
+### Function declaration
+```JavaScript
+function getRectArea(width,height) {
+  return width * height;
+}
+```
+### function expressions
+```JavaScript
+const getRectArea = function(width, height) {
+  return width * height;
+};
+
+console.log(getRectArea(3, 4));
+// expected output: 12
+```
+###function expressions are not hoisted to the top of the code like function declarations
+
+---
+##Arrow Function Expressions-the glorious 'Fat Arrow' =>
+```javascript
+// Anonymous Function
+function (a) {
+  return a + 100;
+}
+
+// 1. Remove the word "function" and place arrow between
+//the argument and opening body bracket
+
+(a) => { return a + 100};
+
+// 2. Remove the body braces and word "return" — the return is implied.
+
+(a) => a + 100;
+
+// 3. Remove the argument parentheses. Concise Arrow
+//function expression
+
+a => a + 100;
+```
+---
+class: center, middle
+#Scope- Global and Block Variable
+
+--
+
+###An important idea in programming is **scope**. Scope defines where variables can be accessed or referenced. While some variables can be accessed from anywhere within a program, other variables may only be available in a specific context.
+
+
+---
+##Global scope
+###When a variable is globally scoped, it means it is available from anywhere in your program. Declaring a variable outside a function or a block outside a function leads to it being globally scoped.
+```javascript
+const myName = 'Ryan';
+
+function tomatoes(){
+  return `${myName} likes tomatoes!`
+}
+
+function iceCream(){
+  return `${myName} also likes ice cream!`
+}
+tomatoes()
+iceCream()
+
+//both functions when called can access the variable myName
+```
+---
+##Local scope
+###When variables are declared within a function or a block, they are locally scoped. It means that they can only be accessed inside the function or the block they were declared in.
+
+```javascript
+
+function findStars(){
+  let constellation = 'Big Dipper';
+  return 'Do you see the' + constellation + '?!';
+}
+
+findStars();
+//returns 'Do you see the Big Dipper?!'
+
+console.log(constellation);
+//Error
+```
+---
+## Scope Practice
+```JavaScript
+let constellation = 'Big Dipper';
+console.log(constellation)
+
+function changeStars(){
+  constellation = 'little dipper'
+  return 'Stars changed.'
+}
+
+changeStars()
+console.log(constellation)
+```
+--
+### what do the do two console.log() statements print in this program?
+---
+
+##Local scope variables are divided into:
+
+###**Function scoped variables**: 
+A function scoped variable means that the variable defined within a function will not accessible from outside the function.
+
+###**Block scoped variables**: 
+A block scoped variable means that the variable defined within a block will not be accessible from outside the block. A block can reside inside a function, and a block scoped variable will not be available outside the block even if the block is inside a function.
+---
+## Scope Challenge- Where does this faulty function blow up?
+
+```javascript
+
+let state = 'New York';
+
+function myBorough(){
+  let city = 'NYC';
+    if (state === 'New York' && city === 'NYC' ){
+      let borough = 'Brooklyn';
+      console.log(borough) ;
+    }
+   console.log(borough);
+   console.log(city);
+}
+
+myBorough();
+```
+---
+class: center, middle
+## DONE!
+[![dwight-good-job](https://sayingimages.com/wp-content/uploads/you-did-good-job-meme.jpg)]
+
+---
+
+---
+
+```Javascript
+function gasPump(gallons){
+
+  const price = gallons * 4.16;
+  const decimal_price = price.toFixed(2);
+  console.log(`Please pay $${decimal_price} for
+      ${gallons} gallons. Thank you for choosing Mobile!`);
+  return price;
+
+}
+
+```
+
+---
+
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>

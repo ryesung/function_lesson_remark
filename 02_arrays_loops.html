@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intro to Functions and Scope</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2" />
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif';
+            font-weight: normal;
+           }
+      h1 {
+        font-family: 'Yanone Kaffeesatz';
+        
+      }
+      h2 {
+        font-family: 'Yanone Kaffeesatz';
+        color: #2DCAB2;
+      }
+      h3 {
+        font-family: 'Yanone Kaffeesatz';
+        color:darkblue;
+       
+      }
+
+      h4 {
+        font-family: 'Yanone Kaffeesatz';
+        color: yellowgreen;
+        size: 50px;
+      }
+      
+      .solution {
+        text-decoration-color: red;
+      }
+      
+      .remark-code, .remark-inline-code { font-family: 'Fira Code';
+    font-size:x-large; }
+
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: center, middle
+<img style="width: 100%;" src="/generation_logo.jpg"/>
+##Javascript Arrays and For Loops
+
+
+---
+class: center, middle
+
+
+##Two Truths and a 
+#Lie
+
+---
+
+#Arrays 
+
+###The Array object, as with arrays in other programming languages, enables storing a collection of multiple items under a single variable name.   
+
+```##Javascript
+let desertArray = [];
+//initialized empty list 
+
+
+let desertArray = ['cake', 'ice cream', 'cookies'];
+//initialized list with thre items
+
+```
+---
+##Arrays continued...
+
+- ###*Javascript arrays are dynamic* 
+They are resizable and can contain a mix of different data types.
+
+- ###*JavaScript arrays are zero-indexed*
+The first element of an array is at index 0, the second is at index 1, and so on — and the last element is at the value of the array's length property minus 1.
+
+--
+
+```javascript 
+let mixedArray = [10, 'cake', true, 'ice cream', 'cookies'];
+```
+
+###What value is at index position 3 in **desertArray**?
+
+--
+##'ice cream'!
+---
+## Array indexes
+
+You can access values in an array through their index.   For printing, adding values, editing values, etc. 
+
+```javascript
+let desertArray = ['cake', 'ice cream', 'cookies'];
+
+console.log(desertArray[1]);
+//prints 'ice cream'
+
+desertArray[3] = 'fruit cup';
+console.log(desertArray);
+
+//prints ['cake', 'ice cream', 'cookies', 'fruit cup']
+
+desertArray[0] = 'fried banana';
+console.log(desertArray);
+
+//['fried banana', 'ice cream', 'cookies', 'fruit cup']
+
+
+```
+---
+class: center, middle
+<a href="https://www.youtube.com/watch?v=oigfaZ5ApsM" target="_blank"><h2>Programming with Mosh- Arrays</h2></a>
+
+---
+
+## Array methods and properties
+
+###Properties are aspects of an object that can be tapped into with a "." after the name of the object.
+
+**.length**
+returns the length of array
+<br>
+
+```javascript
+let desertArray = ['cake', 'ice cream', 'cookies'];
+
+console.log(desertArray.length)
+
+```
+###What is printed to the console?
+--
+
+##3!
+---
+#Array methods
+
+### there are many array methods that help manipulate and access lists. Methods are called with this syntax.
+
+##.methodName()
+
+---
+##Array method examples
+
+### .push()
+Adds one or more elements to the end of an array, and returns the new length of the array.
+
+### .pop()
+Removes the last element from an array and returns that element. 
+
+### .slice()
+Extracts a section of the calling array and returns a new array.
+
+### .join()
+Joins all elements of an array into a string.
+
+---
+
+## Method Exploration- 
+### Look at MDN DOCS!
+
+```javascript
+
+let desertArray = ['cake', 'ice cream', 'cookies'];
+
+let value = desertArray.push('berries')
+
+console.log(value)
+console.log(desertArray)
+```
+###What does Value print as? What does desertArray print as?
+--
+
+##4
+##['cake', 'ice cream', 'cookies', 'berries']
+---
+#.shift()
+
+```javascript
+
+let desertArray = ['cake', 'ice cream', 'cookies'];
+
+let value = desertArray.shift();
+
+console.log(value);
+console.log(desertArray);
+
+```
+###What does Value print as? 
+
+###What does desertArray print as?
+
+--
+## cake 
+
+##['ice cream', 'cookies']
+
+---
+#.join()
+
+```javascript
+
+let desertArray = ['cake', 'ice cream', 'cookies'];
+
+let value = desertArray.join();
+
+console.log(typeof value);
+console.log(value);
+```
+###What does (typeof value) print as? 
+
+###What does value print as?
+--
+
+## string 
+## cake,ice cream,cookies
+
+---
+### A string of "cake,ice cream,cookies" might not be helpful for us- we could look through the docs at the join() method and find something we can do.
+
+--
+```javascript
+let desertArray = ['cake', 'ice cream', 'cookies'];
+
+let statement = desertArray.join(' and ');
+
+console.log('I like ' + statement + '!');
+```
+###What is printed to the console?
+
+--
+## I like cake and ice cream and cookies!
+
+
+---
+class: center, middle
+#30-40 min break-out groups.  Get started on Code Academy Arrays! 
+
+## We'll come back to go over Javascript Loops and homework. 
+
+---
+##Nested arrays 
+###You can have an array be an item in another array
+
+```javascript
+let names = ['mashed potatoes', 'french fries', ['mayo', 'hot sauce', 'ketchup'], 
+'baked potatoes'];
+``` 
+--
+###how would you log the value 'hot sauce'?
+
+*__hint:__ you can index both the outer and inner arrays* 
+
+--
+##console.log(names[2][1])
+
+---
+
+
+#Loops  
+
+### **for** 
+Loops through a block of code a number of times
+### **while**
+ Loopos through a block of code while a specified condition is true
+### **do/while** 
+ Also loops through a block of code while a specified condition is true. But does the action and then evaluates the statement.
+
+--- 
+
+## Also important but we'll go over later 
+ **for/in** - loops through the properties of an object 
+
+ **for/of** - loops through the values of an iterable object
+
+---
+
+#for - loops
+
+<a href="https://www.youtube.com/watch?v=s9wW2PpJsmQ" target="_blank"><h2>Programming with Mosh- Loops</h2></a>
+
+---
+
+## for- loop practice 
+
+```javascript 
+
+let names = ['Sam', 'Greg', 'Layla', 'Tom'];
+
+for (let i=0; i < names.length; i++){
+  console.log('Good afternoon, ' + names[i] + '!');
+};
+
+// Good afternoon, Sam! 
+//Good afternoon, Greg! 
+//Good afternoon, Layla!  
+//Good afternoon, Tom! 
+``` 
+
+
+---
+
+#Answer
+
+```javascript 
+
+let names = ['Sam', 'Greg', 'Layla', 'Tom', 'Sasha', 'Samantha'];
+let lower_case = [];
+
+for ( ;  ;  ){
+    
+  names2.push(  );
+   
+  }
+```
+
+---
+
+##Answer
+```javascript
+let names = ['Sam', 'Greg', 'Layla', 'Tom', 'Sasha', 'Samantha'];
+
+let lower_case = []
+for (let i=0; i < names.length; i++)){ 
+  names2.push(names[i].toLowerCase());
+  }
+
+console.log(names2)
+//['sam', 'greg', 'layla'....]
+```
+---
+
+#While loops
+##The while loop loops through a block of code as long as a specified condition is true.
+
+### Syntax 
+
+**while** *(condition)* {
+   code block to be executed
+}
+
+
+```javascript
+while (i < 10) {
+  text += "The number is " + i;
+  i++;
+}
+```
+---
+#Do While loops
+##Same as While loop but loops through code first and then evaluates the statement.
+
+```javascript
+do {
+  text += "The number is " + i;
+  i++;
+} while (i < 10); 
+```
+
+---
+
+#Homework!!
+---
+</textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js">
+</script>
+<script>
+  var slideshow = remark.create();
+</script>
+</body>
+</html>
