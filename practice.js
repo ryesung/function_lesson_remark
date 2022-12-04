@@ -10,12 +10,12 @@
 // const value = gasPump(5);
 // console.log(value);
 
-// function multiply(number1, number2) {
-//   console.log(number2)
-//   return number1 * number2;
-// }
+function multiply(number1, number2) {
+  console.log(number2)
+  return number1 * number2;
+}
 
-// console.log(multiply(3));
+console.log(multiply(3));
 
 // function isSuperhuman(name = null){
 //   if (!name){
@@ -167,7 +167,8 @@
 //ho
 
 
-// let names = ['Sam', 'Greg', 'Layla', 'Tom', 'Sasha', 'Samantha'];
+let namesList = ['Sam', 'Greg', 'Layla', 
+'Tom', 'Sasha', 'Samantha'];
 
 // let s_names = []
 
@@ -294,6 +295,9 @@ const totalDistanceInKilometers = kilamArray.reduce(function(accumulator, curren
 console.log(totalDistanceInKilometers.toFixed(2) + ' total kms');
 
 
+function multiply(a,   ) {
+  return a * b;
+}
 
 
 
@@ -306,6 +310,15 @@ console.log(totalDistanceInKilometers.toFixed(2) + ' total kms');
 
 
 
+let num = 5;
+
+function addFive(number){
+  number += 5
+  return number
+}
+
+addFive(num)
+console.log(num)
 
 
 
@@ -336,3 +349,5 @@ console.log(totalDistanceInKilometers.toFixed(2) + ' total kms');
 
 // const totalDistance = kilomArray.reduce((accumulator, currentValue) => accumulator + currentValue );
 // console.log(totalDistance.toFixed(2) + ' total km');
+
+
